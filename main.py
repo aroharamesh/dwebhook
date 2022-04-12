@@ -53,6 +53,7 @@ async def lotus_pay_webhook(payload: Dict = Body(...), status_code=status.HTTP_2
 
     # L = [data[i:i + 1] for i in range(len(data))]
     print('response dictionary - ', data_dict)
+    return data_dict
     # target_elements = L.index(b'}') + 1
     # L = L[:target_elements]
     # mydata = ast.literal_eval(L)
@@ -65,7 +66,7 @@ async def lotus_pay_webhook(payload: Dict = Body(...), status_code=status.HTTP_2
 
     # event = json.loads(data[:data.rfind('}')])
 
-    print('printing event - ', event)
+    # print('printing event - ', event)
     # data_dict = response_to_dict(data)
     # return event
     # return {"message": "Hello World"}
