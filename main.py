@@ -46,8 +46,8 @@ async def lotus_pay_webhook(payload: Dict = Body(...), status_code=status.HTTP_2
     data = decipher.decrypt(cipher_text)
     event = json.loads(data[:data.rfind('}')+1])
     # event = json.loads(data)
-    print(data)
-    print(event)
+    print('printing data - ', data)
+    print('printing event - ', event)
     # data_dict = response_to_dict(data)
     # return event
     # return {"message": "Hello World"}
