@@ -45,6 +45,8 @@ async def lotus_pay_webhook(payload: Dict = Body(...), status_code=status.HTTP_2
     #cipher_text = b64decode(msg[16:].encode('utf-8'))
     data = decipher.decrypt(cipher_text)
     print('printing data - ', data)
+    L = [data[i:i + 1] for i in range(len(data))]
+    print('bytes array - ', L)
     # event = json.loads(data[:data.rfind('}')+1])
     # event = json.loads(data)
     event = json.loads(data[:data.rfind('}')])
