@@ -53,10 +53,10 @@ async def lotus_pay_webhook(payload: Dict = Body(...), status_code=status.HTTP_2
     L = L[:target_elements]
     # mydata = ast.literal_eval(L)
     listToStr = ' '.join([str(elem) for elem in L])
-    print('target elements - ', listToStr)
+    print('target elements - ', listToStr.encode('utf-8'))
     # event = json.loads(data[:data.rfind('}')+1])
     event = json.loads(listToStr)
-    
+
 
     # event = json.loads(data[:data.rfind('}')])
 
