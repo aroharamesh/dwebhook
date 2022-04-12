@@ -4,6 +4,8 @@ from Crypto.Cipher import AES
 from base64 import b64decode
 import uvicorn
 from typing import Dict
+import ast
+
 
 app = FastAPI()
 
@@ -48,7 +50,9 @@ async def lotus_pay_webhook(payload: Dict = Body(...), status_code=status.HTTP_2
     L = [data[i:i + 1] for i in range(len(data))]
     print('bytes array - ', L)
     target_elements = L.index(b'}') + 1
-    print('target elements - ', L[:target_elements])
+    L = L[:target_elements]
+    mydata = ast.literal_eval(L)
+    print('target elements - ', mydata)
     # event = json.loads(data[:data.rfind('}')+1])
     # event = json.loads(data)
     event = json.loads(data[:data.rfind('}')])
