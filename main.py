@@ -13,8 +13,8 @@ app = FastAPI()
 def response_to_dict(response):
     """Converting bytes response to python dictionary"""
     # response_content = response.content
-    # response_decode = response.decode("UTF-8")
-    # json_acceptable_string = response.replace("'", "\"")
+    response_decode = response.decode("UTF-8")
+    json_acceptable_string = response.replace("'", "\"")
     convert_to_json = json.loads(response)
     response_dict = dict(convert_to_json)
     return response_dict
@@ -53,7 +53,8 @@ async def lotus_pay_webhook(payload: Dict = Body(...), status_code=status.HTTP_2
     L = L[:target_elements]
     # mydata = ast.literal_eval(L)
     listToStr = ' '.join([str(elem) for elem in L])
-    print('target elements - ', listToStr.encode('utf-8'))
+    list_dict = response_to_dict(listToStr)
+    print('target elements - ', list_dict)
     # event = json.loads(data[:data.rfind('}')+1])
     event = json.loads(listToStr)
 
