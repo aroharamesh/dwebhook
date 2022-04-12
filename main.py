@@ -44,10 +44,12 @@ async def lotus_pay_webhook(payload: Dict = Body(...), status_code=status.HTTP_2
     cipher_text = b64decode(msg[16:].encode('utf-8'))
     #cipher_text = b64decode(msg[16:].encode('utf-8'))
     data = decipher.decrypt(cipher_text)
-    #event = json.loads(data[:data.rfind('}')+1])
+    # event = json.loads(data[:data.rfind('}')+1])
+    event = json.loads(data)
     print(data)
-    data_dict = response_to_dict(data)
-    return data_dict
+    print(event)
+    # data_dict = response_to_dict(data)
+    return event
     # return {"message": "Hello World"}
 
 if __name__ == "__main__":
